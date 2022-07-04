@@ -309,9 +309,49 @@ from random import *
 #------------------------------------------#
 # continue , break
 ## 1
+# absent = [2,5]
+# no_book = [7]
+# for stu in range(1,11):
+#     if stu in absent:
+#         continue
+#     elif stu in no_book:
+#         break
+#     print("{0}, hi" .format(stu))
 
+# ## 2
+# # 1 2 3 4 -> 101 102 103 104
+# stu = [1,2,3,4,5]
+# print(stu)
+# stu = [i+100 for i in stu]
+# print(stu)
+
+# ## 3
+# # name to length
+# stu = ["aa","bbb","cccc","dqweqwd"]
+# stu = [len(i) for i in stu]
+# print(stu)
+
+# ## 4
+# # lower -> upper
+# stu = ["aa","bbb","cccc","dqweqwd"]
+# stu = [i.upper() for i in stu]
+# print(stu)
 
 #------------------------------------------#
+# # quiz
+# total = 0
+# for son in range(1,51):
+#     in_time = randint(5,51)
+#     correct = ''
+#     if 5 <= in_time <= 15:
+#         correct = 'O'
+#         total += 1
+#     else:
+#         correct = ''
+#     print("[{0}] {1} 번째 손님 (소요시간 : {2}" .format(correct, son, in_time))
+
+# print("총 탑승 승객 : {0}분" .format(total))
+
 #------------------------------------------#
 #------------------------------------------#
 #------------------------------------------#
