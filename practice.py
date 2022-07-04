@@ -10,6 +10,7 @@
 # print(ceil(4.99))
 # print(sqrt(16))
 
+from operator import truediv
 from random import *
 # print(random())
 # print(random()*10)
@@ -136,6 +137,7 @@ from random import *
 # arr.extend(mix)
 # print(arr)
 
+#------------------------------------------#
 # # dictionary
 # cab = {3:"aaa", 4:"bbb"}
 # print(cab)
@@ -214,18 +216,106 @@ from random import *
 
 #------------------------------------------#
 # quiz
-arr = range(1,21)
-print(arr)
-li = list(arr)
-print(li)
-par = int(random()*10+1)
-par2 = list(par)
-print(par2)
+
+# #### 내가 짠거 ####
+# arr = range(1,21)
+# li = list(arr)
+
+# # print(li)
+
+# rank1 = sample(li,1)
+# set_list = set(li)
+# rank1 = set(rank1)
+
+# set_list = set_list - rank1
+# set_list = list(set_list)
+
+# rank2 = sample(set_list,3)
+
+
+# print("-- 당첨자 발표 --")
+# print("치킨 당첨자 : " + str(rank1))
+# print("커피 당첨자 : " + str(rank2))
+# print("-- 축하합니다 --")
+
+
+# #### 정답 ####
+# users = range(1,21)
+# users = list(users)
+# shuffle(users)
+
+# winner = sample(users, 4)
+# print("-- 당첨자 발표 --")
+# print("치킨 당첨자 : {0}".format(winner[0]))
+# print("커피 당첨자 : {0}".format(winner[1:]))
+# print("-- 축하합니다 --")
 
 #------------------------------------------#
+# if
+
+## 1
+# weather = input("What ? ")
+# if weather == "rain" or weather == "snow":
+#     print("umbrella")
+# elif weather == "sunny":
+#     print("good")
+# else:
+#     print("not good")
+
+
+## 2
+# temp = int(input("how is temp?"))
+
+# if(temp >= 30):
+#     print("so hot")
+# elif temp >= 10 and temp < 30:
+#     print("good")
+# elif 0 <= temp < 10:
+#     print("cold")
+# else:
+#     print("die")
 
 #------------------------------------------#
+# for
+## 1
+# for wait in range(1,10):
+#     print("No. {0}".format(wait))
+
+## 2
+# star = ["iron", "hulk", "thor"]
+
+# for customer in star:
+#     print("{0}, ready".format(customer))
 
 #------------------------------------------#
+# while
+## 1
+# customer = "thor"
+# index = 5
 
+# while index >= 1:
+#     print("{0}!!, {0} remaning".format(customer) .format(index))
+#     index -= 1
+#     if index == 0:
+#         print("Complete")
+
+## 2
+# customer = "iron"
+# person = "unknown"
+# while person != customer:
+#     print("{0}!!, It's ready".format(customer))
+#     person = input("what is your name? ")
+
+#------------------------------------------#
+# continue , break
+## 1
+
+
+#------------------------------------------#
+#------------------------------------------#
+#------------------------------------------#
+#------------------------------------------#
+#------------------------------------------#
+#------------------------------------------#
+#------------------------------------------#
 #------------------------------------------#
