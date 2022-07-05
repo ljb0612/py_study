@@ -353,8 +353,133 @@ from random import *
 # print("총 탑승 승객 : {0}분" .format(total))
 
 #------------------------------------------#
+# # function
+# ## 1
+# def open_acc():
+#     print("making Account")
+
+# open_acc()
+
+# def deposit(bal, money):
+#     print("Complete. Balance is {0}".format(bal+money))
+#     return bal+money
+
+# def withdraw(bal,money):
+#     if bal > money:
+#         print("Withdrwa is complete. Balance is {0}".format(bal - money))
+#         return bal - money
+#     else:
+#         print("Withdraw is failed. Balance is {0}".format(bal))
+#         return bal
+
+# def withdraw_night(bal, money):
+#     comm = 100
+#     return comm, bal - money - comm
+
+# bal = 0
+# bal = deposit(bal,5000)
+# bal = deposit(bal,15000)
+
+# bal = withdraw(bal, 50000)
+# bal = withdraw(bal, 5000)
+
+# comm, bal = withdraw_night(bal, 3000)
+# print("commition is {0} and Balance is {1}".format(comm, bal))
+
+# ## 2 가변인자
+# def test(name, age, lang1, lang2, lang3):
+#     print(name, age, end =" ")  # end는 줄바꿈 전에
+#     print(lang1, lang2, lang3)
+
+# test("abc",20,"java","c","go")
+
+# def test2(name, age, *lang):
+#     print(name, age, end =" ")  # end는 줄바꿈 전에
+#     for lang in lang:
+#         print(lang, end = " ")
+#     print()
+# test2("abc",20,"java","c","go","C++")
+
+# ## 3 지역변수 / 전역변수
+# gun = 10
+
+# def check(sol):
+#     global gun
+#     gun = gun - sol
+#     print("Remaining Gun : {0}".format(gun))
+
+# check(5)
+
+# def check_ret(gun,sol):
+#     gun = gun - sol
+#     print("Remaining Gun : {0}".format(gun))
+#     #return gun
+
+# check_ret(gun,3)
+# print("Remaining Gun : {0}".format(gun))
+
 #------------------------------------------#
+# quiz
+
+# std = 0
+
+# def std_weight(height, gender):
+#     global std
+#     if gender == "mail":
+#         std = float(height*0.01) * float(height*0.01) * 22
+#     elif gender == "femail":
+#         std = float(height*0.01) * float(height*0.01) * 21
+#     else:
+#         print("Wrong Gender")
+#     print("{}cm {}'s standard weight is {}".format(height,gender, round(std,2)))
+
+# std_weight(184,"mail")
+# std_weight(168,"femail")
+
 #------------------------------------------#
+## Standard In/Out
+# # 1
+# import sys
+# print("aa","bb", sep=",",end="?")   # sep = 구분자 (, 로 구분되는 부분을 치환), end = 문장의 끝 부분을 치환 (\r)
+# print("hahaha")
+
+# print("aa","bb", file=sys.stdout)
+# print("aa","bb", file=sys.stderr)
+
+# # 2 - just
+# score = {"math":0, "eng":50, "coding":100}
+
+# for sub, score in score.items():
+#     #print(sub, score)
+#     print(sub.ljust(10), str(score).rjust(4))
+
+# # 3 - zfill
+# for num in range(1,21):
+#     print("No : " + str(num).zfill(3))
+
+# # 4 - input - 항상 문자열임
+# ans = input("Any Num : ")
+# print(ans)
+
+# # 5 - 다양한 출력 포맷
+# # 빈자리 빈공간, 오른쪽 정렬, 총 10자리 공간
+# print("{0: >10}".format(500))
+# # 양수, 음수 구분
+# print("{0: >+10}".format(500))
+# print("{0: >+10}".format(-500))
+# # 왼쪽 정렬, 빈칸으로 _ 채움
+# print("{0:_<+10}".format(500))
+# # 세 자리 마다 콤마
+# print("{0:,}".format(1234567890))
+# # 세 자리 마다 콤마, 부호 표시
+# print("{0:+,}".format(1234567890))
+# # 세 자리 마다 콤마, 부호 표시, 자리수 확보, 빈자리 채움
+# print("{0:^<+30,}".format(1234567890))
+# # 소수점 출력
+# print("{0:f}".format(5/3))
+# # 소수점 특정 자리수 까지 출력
+# print("{0:.2f}".format(5/3))
+
 #------------------------------------------#
 #------------------------------------------#
 #------------------------------------------#
