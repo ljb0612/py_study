@@ -481,6 +481,128 @@ from random import *
 # print("{0:.2f}".format(5/3))
 
 #------------------------------------------#
+# file in/out
+# # 1
+# score = open("score.txt","w",encoding="utf8")
+# print("test 1", file=score)
+# print("test 2", file=score)
+# score.close()
+
+# # 2
+# score = open("score.txt","a", encoding="utf8")
+# score.write("text3")
+# score.write("\ntext4")
+# score.close()
+
+# # 3
+# score = open("score.txt","r",encoding="utf8")
+# print(score.read())
+# score.close()
+
+# # 4
+# score = open("score.txt", "r", encoding="utf8")
+# print(score.readline(), end="") ## 줄별로 읽기, 커서 다음줄 이동
+# print(score.readline(), end="")
+# print(score.readline(), end="")
+# print(score.readline(), end="")
+# score.close()
+
+# # 5
+# score = open("score.txt", "r", encoding="utf8")
+# while True:
+#     line = score.readline()
+#     if not line:
+#         break
+#     print(line, end="")
+# score.close()
+
+# # 6
+# score = open("score.txt", "r", encoding="utf8")
+# lines= score.readlines()
+# for line in lines:
+#     print(line, end="")
+# score.close()
+
+#------------------------------------------#
+# Pickle - 데이터를 파일 형태로 저장
+
+import pickle
+
+# # 1
+# profile_file = open("profile.pic","wb")
+# profile = {"name":"lee","age":"33","hobby":["a","b","c"]}
+# print(profile)
+# pickle.dump(profile,profile_file)   # profile에 있는 정보를 file에 저장
+# profile_file.close()
+
+# # 2
+# profile_file = open("profile.pic","rb")
+# profile = pickle.load(profile_file)
+# print(profile)
+# profile_file.close()
+
+#------------------------------------------#
+# with - close 안해도됨
+# # 1
+# with open("profile.pic","rb") as profile_file:
+#     print(pickle.load(profile_file))
+
+# # 2 - with를 이용해 입출력
+# with open("st.txt","w",encoding="utf8") as st_file:
+#     st_file.write("test123")
+
+# with open("st.txt","r",encoding="utf8") as st_file:
+#     print(st_file.read())
+
+#------------------------------------------#
+# # Quiz
+
+# week = 1
+# for week in range(1,51):
+#     file_name = str(week) + "Week.txt"
+#     with open(file_name, "w", encoding="utf8") as file:
+#         file.write("- {0} Weekly -\n".format(week))
+#         file.write("Department : \n")
+#         file.write("name : \n")
+#         file.write("summary : ")
+
+# for week in range(1,51):
+#     file_name = str(week) + "Week.txt"
+#     with open(file_name, "r", encoding="utf8") as file:
+#         print(file.read())
+
+#------------------------------------------#
+# class
+# 1
+class unit:
+    def __init__(self,name,hp,dam): # 생성자
+        self.name = name
+        self.hp = hp
+        self.dam = dam
+        print("{0} Unit is Created !".format(self.name))
+        print("hp {0}, Attack Damage {1}".format(self.hp, self.dam))
+
+# marine = unit("Marine",40,5)
+# tank = unit("Tank",150,35)
+
+wraith1 = unit("Wraith", 80, 5)
+print("name : {0}, Attack Damage : {1}".format(wraith1.name, wraith1.dam))
+
+
+# 변수를 외부에서 만들어 쓸수있음
+wraith2 = unit("Wraith", 80, 5)
+wraith2.clocking = True
+
+if wraith2.clocking == True:
+    print("{0} is clocking".format(wraith2.name))
+
+#------------------------------------------#
+#------------------------------------------#
+#------------------------------------------#
+#------------------------------------------#
+#------------------------------------------#
+#------------------------------------------#
+#------------------------------------------#
 #------------------------------------------#
 #------------------------------------------#
 #------------------------------------------#
