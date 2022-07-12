@@ -572,29 +572,284 @@ import pickle
 #         print(file.read())
 
 #------------------------------------------#
-# class
-# 1
-class unit:
-    def __init__(self,name,hp,dam): # 생성자
-        self.name = name
-        self.hp = hp
-        self.dam = dam
-        print("{0} Unit is Created !".format(self.name))
-        print("hp {0}, Attack Damage {1}".format(self.hp, self.dam))
+# @@@ class
+# # 1
+# class unit: # Normal Unit
+#     def __init__(self,name,hp,dam): # 생성자
+#         self.name = name
+#         self.hp = hp
+#         self.dam = dam
+#         print("{0} Unit is Created !".format(self.name))
+#         print("hp {0}, Attack Damage {1}".format(self.hp, self.dam))
 
 # marine = unit("Marine",40,5)
 # tank = unit("Tank",150,35)
 
-wraith1 = unit("Wraith", 80, 5)
-print("name : {0}, Attack Damage : {1}".format(wraith1.name, wraith1.dam))
-
+# wraith1 = unit("Wraith", 80, 5)
+# print("name : {0}, Attack Damage : {1}".format(wraith1.name, wraith1.dam))
 
 # 변수를 외부에서 만들어 쓸수있음
-wraith2 = unit("Wraith", 80, 5)
-wraith2.clocking = True
+# wraith2 = unit("Wraith", 80, 5)
+# wraith2.clocking = True
 
-if wraith2.clocking == True:
-    print("{0} is clocking".format(wraith2.name))
+# if wraith2.clocking == True:
+#     print("{0} is clocking".format(wraith2.name))
+
+# class AttackUnit:
+#     def __init__(self,name,hp,dam): # 생성자
+#         self.name = name
+#         self.hp = hp
+#         self.dam = dam
+
+#     def attack(self, location):
+#         print("{0} : Attack at {1} [Power {2}]".format(self.name,location,self.dam))
+
+#     def damaged(self,damage):
+#         print("{0} : {1} get damaged".format(self.name,damage))
+#         self.hp -= damage
+#         print("{0} : current hp is {1}".format(self.name,self.hp))
+#         if self.hp <= 0:
+#             print("{0} is dead".format(self.name))
+
+# fire1 = AttackUnit("Firebat", 50, 16)
+# fire1.attack("5")
+
+# fire1.damaged(25)
+# fire1.damaged(25)
+
+# # 2 - 상속
+# class Unit:     # Normal Unit
+#     def __init__(self,name,hp): # 생성자
+#         self.name = name
+#         self.hp = hp
+
+# class AttackUnit(Unit):
+#     def __init__(self,name,hp,dam): # 생성자
+#         Unit.__init__(self,name,hp)
+#         self.dam = dam
+
+#     def attack(self, location):
+#         print("{0} : Attack at {1} [Power {2}]".format(self.name,location,self.dam))
+
+#     def damaged(self,damage):
+#         print("{0} : {1} get damaged".format(self.name,damage))
+#         self.hp -= damage
+#         print("{0} : current hp is {1}".format(self.name,self.hp))
+#         if self.hp <= 0:
+#             print("{0} is dead".format(self.name))
+
+# fire1 = AttackUnit("Firebat", 50, 16)
+# fire1.attack("5")
+
+# fire1.damaged(25)
+# fire1.damaged(25)
+
+# # 3 - 다중 상속
+# class Unit:     # Normal Unit
+#     def __init__(self,name,hp): # 생성자
+#         self.name = name
+#         self.hp = hp
+
+# class AttackUnit(Unit):
+#     def __init__(self,name,hp,dam): # 생성자
+#         Unit.__init__(self,name,hp)
+#         self.dam = dam
+
+#     def attack(self, location):
+#         print("{0} : Attack at {1} [Power {2}]".format(self.name,location,self.dam))
+
+#     def damaged(self,damage):
+#         print("{0} : {1} get damaged".format(self.name,damage))
+#         self.hp -= damage
+#         print("{0} : current hp is {1}".format(self.name,self.hp))
+#         if self.hp <= 0:
+#             print("{0} is dead".format(self.name))
+
+# class Flyable:
+#     def __init__(self, speed):
+#         self.speed = speed
+#     def fly(self,name,location):
+#         print("{0} : Fly at {1}. [Speed : {2}]".format(name, location, self.speed))
+
+# class FlyAttackUnit(AttackUnit,Flyable):
+#     def __init__(self, name, hp, damage, speed):
+#         AttackUnit.__init__(self,name,hp,damage)
+#         Flyable.__init__(self,speed)
+
+# val = FlyAttackUnit("Valkyrie",200,6,5)
+# val.fly(val.name,"1")
+
+# # 4 - 메소드 오버라이딩
+# class Unit:     # Normal Unit
+#     def __init__(self,name,hp, speed): # 생성자
+#         self.name = name
+#         self.hp = hp
+#         self.speed = speed
+        
+#     def move(self,location):
+#         print("Unit is Moving")
+#         print("{0} : Move at {1} location. [Speed : {2}]".format(self.name, location, self.speed))
+
+# class AttackUnit(Unit):
+#     def __init__(self,name,hp,speed, dam): # 생성자
+#         Unit.__init__(self,name,hp, speed)
+#         self.dam = dam
+
+#     def attack(self, location):
+#         print("{0} : Attack at {1} [Power {2}]".format(self.name,location,self.dam))
+
+#     def damaged(self,damage):
+#         print("{0} : {1} get damaged".format(self.name,damage))
+#         self.hp -= damage
+#         print("{0} : current hp is {1}".format(self.name,self.hp))
+#         if self.hp <= 0:
+#             print("{0} is dead".format(self.name))
+
+# class Flyable:
+#     def __init__(self, speed):
+#         self.speed = speed
+#     def fly(self,name,location):
+#         print("{0} : Fly at {1} location. [Speed : {2}]".format(name, location, self.speed))
+
+# class FlyAttackUnit(AttackUnit,Flyable):
+#     def __init__(self, name, hp, damage, speed):
+#         AttackUnit.__init__(self,name,hp,0,damage)
+#         Flyable.__init__(self,speed)
+
+#     def move(self, location):
+#         print("Fly Unit Moving")
+#         self.fly(self.name,location)
+
+# vul = AttackUnit("Vulture", 80, 10, 20)
+# battle = FlyAttackUnit("Battle Cruiser", 500, 25, 3)
+
+# vul.move("5")
+# #battle.fly(battle.name, "9")
+# battle.move("9")
+
+# # 5 - PASS
+# def game_start():
+#     print("Start Game")
+# def game_over():
+#     pass        # 완성된것 처럼 보임
+
+# game_start()
+# game_over()
+
+# # 6 - Super - practice_class.py 참조
+# class Unit:     # Normal Unit
+#     def __init__(self,name,hp, speed): # 생성자
+#         self.name = name
+#         self.hp = hp
+#         self.speed = speed
+        
+#     def move(self,location):
+#         print("Unit is Moving")
+#         print("{0} : Move at {1} location. [Speed : {2}]".format(self.name, location, self.speed))
+
+# class AttackUnit(Unit):
+#     def __init__(self,name,hp,speed, dam): # 생성자
+#         Unit.__init__(self,name,hp, speed)
+#         self.dam = dam
+
+#     def attack(self, location):
+#         print("{0} : Attack at {1} [Power {2}]".format(self.name,location,self.dam))
+
+#     def damaged(self,damage):
+#         print("{0} : {1} get damaged".format(self.name,damage))
+#         self.hp -= damage
+#         print("{0} : current hp is {1}".format(self.name,self.hp))
+#         if self.hp <= 0:
+#             print("{0} is dead".format(self.name))
+
+# class Flyable:
+#     def __init__(self, speed):
+#         self.speed = speed
+#     def fly(self,name,location):
+#         print("{0} : Fly at {1} location. [Speed : {2}]".format(name, location, self.speed))
+
+# class FlyAttackUnit(AttackUnit,Flyable):
+#     def __init__(self, name, hp, damage, speed):
+#         AttackUnit.__init__(self,name,hp,0,damage)
+#         Flyable.__init__(self,speed)
+
+#     def move(self, location):
+#         print("Fly Unit Moving")
+#         self.fly(self.name,location)
+
+# class buildingUnit(Unit):
+#     def __init__(self, name, hp, location):
+#         super().__init__(name, hp, 0)
+#         self.location = location
+
+
+# 8 - Project
+class Unit:     # Normal Unit
+    def __init__(self,name,hp, speed): # 생성자
+        self.name = name
+        self.hp = hp
+        self.speed = speed
+        print("{0} Unit Create complete".format(self.name))
+        
+    def move(self,location):
+        print("Unit is Moving")
+        print("{0} : Move at {1} location. [Speed : {2}]".format(self.name, location, self.speed))
+
+    def damaged(self,damage):
+        print("{0} : {1} get damaged".format(self.name,damage))
+        self.hp -= damage
+        print("{0} : current hp is {1}".format(self.name,self.hp))
+        if self.hp <= 0:
+            print("{0} is dead".format(self.name))
+
+class AttackUnit(Unit):
+    def __init__(self,name,hp,speed, dam): # 생성자
+        Unit.__init__(self,name,hp, speed)
+        self.dam = dam
+    def attack(self, location):
+        print("{0} : Attack at {1} [Power {2}]".format(self.name,location,self.dam))
+
+class Flyable:
+    def __init__(self, speed):
+        self.speed = speed
+    def fly(self,name,location):
+        print("{0} : Fly at {1} location. [Speed : {2}]".format(name, location, self.speed))
+
+class FlyAttackUnit(AttackUnit,Flyable):
+    def __init__(self, name, hp, damage, speed):
+        AttackUnit.__init__(self,name,hp,0,damage)
+        Flyable.__init__(self,speed)
+    def move(self, location):
+        print("Fly Unit Moving")
+        self.fly(self.name,location)
+
+
+class marine(AttackUnit):
+    def __init__(self):
+        AttackUnit.__init__(self,"Marine", 40, 1, 5)
+    def steampack(self):
+        if self.hp > 10:
+            self.hp -= 10
+            print("{0} : Use Steampack (hp is decreased)".format(self.name))
+        else:
+            print("{0} : lack of hp".format(self.name))
+
+class tank(AttackUnit):
+    seize_developed = False
+    def __init__(self):
+        AttackUnit.__init__(self,"Tank",150,1,35)
+        self.seize_mode = False
+    def setSeize(self):
+        if tank.seize_developed == False:
+            return
+        if self.seize_mode == False:
+            self.seize_mode = True
+            self.dam *= 2
+            print("{0} : Switch to seize mode")
+        else:
+            self.seize_mode = False
+            self.dam /= 2
+            print("{0} : Turns seize Mode off")
 
 #------------------------------------------#
 #------------------------------------------#
