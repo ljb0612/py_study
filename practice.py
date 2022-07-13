@@ -853,20 +853,57 @@ class tank(AttackUnit):
 class wraith(FlyAttackUnit):
     def __init__(self):
         FlyAttackUnit.__init__(self,"Wraith",80,20,5)
-        self.clocking = False
+        self.clock_state = False
     def clocking(self):
-        if self.clocking:
+        if self.clock_state:
             print("{} : Clocking mode release".format(self.name))
-            self.clocking = False
+            self.clock_state = False
         else:
             print("{} : Clocking mode on".format(self.name))
-            self.clocking = True
+            self.clock_state = True
 
 def game_start():
     print("Game Start")
 def game_over():
     print("GG")
 
+game_start()
+
+m1 = marine()
+m2 = marine()
+m3 = marine()
+t1 = tank()
+t2 = tank()
+w1 = wraith()
+
+unit_list = []
+unit_list.append(m1)
+unit_list.append(m2)
+unit_list.append(m3)
+unit_list.append(t1)
+unit_list.append(t2)
+unit_list.append(w1)
+
+for unit in unit_list:
+    unit.move("1")
+
+tank.seize_developed = True
+
+for unit in unit_list:
+    if isinstance(unit, marine):
+        unit.steampack()
+    elif isinstance(unit, tank):
+        unit.setSeize()
+    elif isinstance(unit, wraith):
+        unit.clocking()
+
+for unit in unit_list:
+    unit.attack("1")
+
+for unit in unit_list:
+    unit.damaged(randint(5,21))
+
+game_over()
 
 #------------------------------------------#
 #------------------------------------------#
