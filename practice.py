@@ -823,7 +823,6 @@ class FlyAttackUnit(AttackUnit,Flyable):
         print("Fly Unit Moving")
         self.fly(self.name,location)
 
-
 class marine(AttackUnit):
     def __init__(self):
         AttackUnit.__init__(self,"Marine", 40, 1, 5)
@@ -850,6 +849,24 @@ class tank(AttackUnit):
             self.seize_mode = False
             self.dam /= 2
             print("{0} : Turns seize Mode off")
+
+class wraith(FlyAttackUnit):
+    def __init__(self):
+        FlyAttackUnit.__init__(self,"Wraith",80,20,5)
+        self.clocking = False
+    def clocking(self):
+        if self.clocking:
+            print("{} : Clocking mode release".format(self.name))
+            self.clocking = False
+        else:
+            print("{} : Clocking mode on".format(self.name))
+            self.clocking = True
+
+def game_start():
+    print("Game Start")
+def game_over():
+    print("GG")
+
 
 #------------------------------------------#
 #------------------------------------------#
