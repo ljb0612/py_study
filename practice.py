@@ -10,8 +10,10 @@
 # print(ceil(4.99))
 # print(sqrt(16))
 
-from operator import truediv
-from random import *
+# from curses.ascii import isalnum, isdigit
+# from logging.config import valid_ident
+# from operator import truediv
+# from random import *
 # print(random())
 # print(random()*10)
 # print(int(random()*10))
@@ -783,133 +785,269 @@ import pickle
 #         self.location = location
 
 
-# 8 - Project
-class Unit:     # Normal Unit
-    def __init__(self,name,hp, speed): # 생성자
-        self.name = name
-        self.hp = hp
-        self.speed = speed
-        print("{0} Unit Create complete".format(self.name))
+# # 8 - Project
+# class Unit:     # Normal Unit
+#     def __init__(self,name,hp, speed): # 생성자
+#         self.name = name
+#         self.hp = hp
+#         self.speed = speed
+#         print("{0} Unit Create complete".format(self.name))
         
-    def move(self,location):
-        print("Unit is Moving")
-        print("{0} : Move at {1} location. [Speed : {2}]".format(self.name, location, self.speed))
+#     def move(self,location):
+#         print("Unit is Moving")
+#         print("{0} : Move at {1} location. [Speed : {2}]".format(self.name, location, self.speed))
 
-    def damaged(self,damage):
-        print("{0} : {1} get damaged".format(self.name,damage))
-        self.hp -= damage
-        print("{0} : current hp is {1}".format(self.name,self.hp))
-        if self.hp <= 0:
-            print("{0} is dead".format(self.name))
+#     def damaged(self,damage):
+#         print("{0} : {1} get damaged".format(self.name,damage))
+#         self.hp -= damage
+#         print("{0} : current hp is {1}".format(self.name,self.hp))
+#         if self.hp <= 0:
+#             print("{0} is dead".format(self.name))
 
-class AttackUnit(Unit):
-    def __init__(self,name,hp,speed, dam): # 생성자
-        Unit.__init__(self,name,hp, speed)
-        self.dam = dam
-    def attack(self, location):
-        print("{0} : Attack at {1} [Power {2}]".format(self.name,location,self.dam))
+# class AttackUnit(Unit):
+#     def __init__(self,name,hp,speed, dam): # 생성자
+#         Unit.__init__(self,name,hp, speed)
+#         self.dam = dam
+#     def attack(self, location):
+#         print("{0} : Attack at {1} [Power {2}]".format(self.name,location,self.dam))
 
-class Flyable:
-    def __init__(self, speed):
-        self.speed = speed
-    def fly(self,name,location):
-        print("{0} : Fly at {1} location. [Speed : {2}]".format(name, location, self.speed))
+# class Flyable:
+#     def __init__(self, speed):
+#         self.speed = speed
+#     def fly(self,name,location):
+#         print("{0} : Fly at {1} location. [Speed : {2}]".format(name, location, self.speed))
 
-class FlyAttackUnit(AttackUnit,Flyable):
-    def __init__(self, name, hp, damage, speed):
-        AttackUnit.__init__(self,name,hp,0,damage)
-        Flyable.__init__(self,speed)
-    def move(self, location):
-        print("Fly Unit Moving")
-        self.fly(self.name,location)
+# class FlyAttackUnit(AttackUnit,Flyable):
+#     def __init__(self, name, hp, damage, speed):
+#         AttackUnit.__init__(self,name,hp,0,damage)
+#         Flyable.__init__(self,speed)
+#     def move(self, location):
+#         print("Fly Unit Moving")
+#         self.fly(self.name,location)
 
-class marine(AttackUnit):
-    def __init__(self):
-        AttackUnit.__init__(self,"Marine", 40, 1, 5)
-    def steampack(self):
-        if self.hp > 10:
-            self.hp -= 10
-            print("{0} : Use Steampack (hp is decreased)".format(self.name))
-        else:
-            print("{0} : lack of hp".format(self.name))
+# class marine(AttackUnit):
+#     def __init__(self):
+#         AttackUnit.__init__(self,"Marine", 40, 1, 5)
+#     def steampack(self):
+#         if self.hp > 10:
+#             self.hp -= 10
+#             print("{0} : Use Steampack (hp is decreased)".format(self.name))
+#         else:
+#             print("{0} : lack of hp".format(self.name))
 
-class tank(AttackUnit):
-    seize_developed = False
-    def __init__(self):
-        AttackUnit.__init__(self,"Tank",150,1,35)
-        self.seize_mode = False
-    def setSeize(self):
-        if tank.seize_developed == False:
-            return
-        if self.seize_mode == False:
-            self.seize_mode = True
-            self.dam *= 2
-            print("{0} : Switch to seize mode")
-        else:
-            self.seize_mode = False
-            self.dam /= 2
-            print("{0} : Turns seize Mode off")
+# class tank(AttackUnit):
+#     seize_developed = False
+#     def __init__(self):
+#         AttackUnit.__init__(self,"Tank",150,1,35)
+#         self.seize_mode = False
+#     def setSeize(self):
+#         if tank.seize_developed == False:
+#             return
+#         if self.seize_mode == False:
+#             self.seize_mode = True
+#             self.dam *= 2
+#             print("{0} : Switch to seize mode")
+#         else:
+#             self.seize_mode = False
+#             self.dam /= 2
+#             print("{0} : Turns seize Mode off")
 
-class wraith(FlyAttackUnit):
-    def __init__(self):
-        FlyAttackUnit.__init__(self,"Wraith",80,20,5)
-        self.clock_state = False
-    def clocking(self):
-        if self.clock_state:
-            print("{} : Clocking mode release".format(self.name))
-            self.clock_state = False
-        else:
-            print("{} : Clocking mode on".format(self.name))
-            self.clock_state = True
+# class wraith(FlyAttackUnit):
+#     def __init__(self):
+#         FlyAttackUnit.__init__(self,"Wraith",80,20,5)
+#         self.clock_state = False
+#     def clocking(self):
+#         if self.clock_state:
+#             print("{} : Clocking mode release".format(self.name))
+#             self.clock_state = False
+#         else:
+#             print("{} : Clocking mode on".format(self.name))
+#             self.clock_state = True
 
-def game_start():
-    print("Game Start")
-def game_over():
-    print("GG")
+# def game_start():
+#     print("Game Start")
+# def game_over():
+#     print("GG")
 
-game_start()
+# game_start()
 
-m1 = marine()
-m2 = marine()
-m3 = marine()
-t1 = tank()
-t2 = tank()
-w1 = wraith()
+# m1 = marine()
+# m2 = marine()
+# m3 = marine()
+# t1 = tank()
+# t2 = tank()
+# w1 = wraith()
 
-unit_list = []
-unit_list.append(m1)
-unit_list.append(m2)
-unit_list.append(m3)
-unit_list.append(t1)
-unit_list.append(t2)
-unit_list.append(w1)
+# unit_list = []
+# unit_list.append(m1)
+# unit_list.append(m2)
+# unit_list.append(m3)
+# unit_list.append(t1)
+# unit_list.append(t2)
+# unit_list.append(w1)
 
-for unit in unit_list:
-    unit.move("1")
+# for unit in unit_list:
+#     unit.move("1")
 
-tank.seize_developed = True
+# tank.seize_developed = True
 
-for unit in unit_list:
-    if isinstance(unit, marine):
-        unit.steampack()
-    elif isinstance(unit, tank):
-        unit.setSeize()
-    elif isinstance(unit, wraith):
-        unit.clocking()
+# for unit in unit_list:
+#     if isinstance(unit, marine):
+#         unit.steampack()
+#     elif isinstance(unit, tank):
+#         unit.setSeize()
+#     elif isinstance(unit, wraith):
+#         unit.clocking()
 
-for unit in unit_list:
-    unit.attack("1")
+# for unit in unit_list:
+#     unit.attack("1")
 
-for unit in unit_list:
-    unit.damaged(randint(5,21))
+# for unit in unit_list:
+#     unit.damaged(randint(5,21))
 
-game_over()
+# game_over()
 
 #------------------------------------------#
+# # Quiz - Class
+# class house:
+#     def __init__(self,location,house_type,deal_type,price,completion_year):
+#         self.location = location
+#         self.house_type = house_type
+#         self.deal_type = deal_type
+#         self.price = price
+#         self.completion_year = completion_year
+#     def show(self):
+#         #print(self.location + " " + self.house_type + " " + self.deal_type + " " + self.price + " " + self.completion_year)
+#         print(self.location,self.house_type,self.deal_type,self.price,self.completion_year)
+
+# house1 = house("Seoul","APT","Lease","500 million","2024")
+# house2 = house("Incheon","APT","Buy","300 million","Indefinitely")
+# house3 = house("Busan","OP","Lease","200 million","2023")
+
+# house_list = []
+# house_list.append(house1)
+# house_list.append(house2)
+# house_list.append(house3)
+
+# print("Total {0} For Sale".format(len(house_list)))
+
+# for ho in house_list:
+#     ho.show()
+
 #------------------------------------------#
+# Exception
 #------------------------------------------#
+# # 1
+# try:
+#     print("나누기 전용 계산기")
+#     nums = []
+#     nums.append(int(input("첫 번째 숫자 : ")))
+#     nums.append(int(input("두 번째 숫자 : ")))
+#     #nums.append(int(nums[0]/nums[1]))
+#     print("{0} / {1} = {2}".format(nums[0],nums[1],nums[2]))
+# except ValueError as err:
+#     print(err)
+# except ZeroDivisionError as err:
+#     print(err)
+# except Exception as err:
+#     print(err)
+
+# # 2 - 의도적 error 발생
+# try:
+#     print("한 자리 숫자 나누기")
+#     num1 = int(input("first : "))
+#     num2 = int(input("second : "))
+
+#     if num1 >= 10 or num2 >= 10:
+#         raise ValueError
+#     print("{0} / {1} = {2}".format(num1,num2,int(num1/num2)))
+# except ValueError:
+#     print("err")
+
+# # 3 - 사용자 정의 에러 처리
+# class bigNumErr(Exception):
+#     def __init__(self, msg):
+#         self.msg = msg
+#     def __str__(self):
+#         return self.msg
+
+# try:
+#     print("한 자리 숫자 나누기")
+#     num1 = int(input("first : "))
+#     num2 = int(input("second : "))
+
+#     if num1 >= 10 or num2 >= 10:
+#         raise bigNumErr("Class Exception")
+#     print("{0} / {1} = {2}".format(num1,num2,int(num1/num2)))
+# except ValueError:
+#     print("err")
+# except bigNumErr as err:
+#     print(err)
+
+# # 4 - Finally (무조건 실행)
+# class bigNumErr(Exception):
+#     def __init__(self, msg):
+#         self.msg = msg
+#     def __str__(self):
+#         return self.msg
+
+# try:
+#     print("한 자리 숫자 나누기")
+#     num1 = int(input("first : "))
+#     num2 = int(input("second : "))
+
+#     if num1 >= 10 or num2 >= 10:
+#         raise bigNumErr("Class Exception")
+#     print("{0} / {1} = {2}".format(num1,num2,int(num1/num2)))
+# except ValueError:
+#     print("err")
+# except bigNumErr as err:
+#     print(err)
+# finally:
+#     print("test")
+
 #------------------------------------------#
+# # Quiz - Exception
+# class SoldoutErr(Exception):
+#     def __init__(self,msg):
+#         self.msg = msg
+#     def __str__(self):
+#         return self.msg
+
+# max_order = 10
+# waiting = 1
+
+# while(True):
+#     try:
+#         print("남은 치킨 : {0}".format(max_order))
+#         order = int(input("how many? : "))
+#         if order < 1:
+#             raise ValueError
+#         elif order > max_order:
+#             print("남은 치킨이 부족합니다")
+#         else:
+#             print("대기번호 {0} : {1} 마리 주문 완료".format(waiting,order))
+#             waiting += 1
+#             max_order -= order
+
+#         if max_order == 0:
+#             #raise Sold5outErr
+#             raise SoldoutErr("장사 종료")
+            
+#     except ValueError as err:
+#         print(err)
+#     except SoldoutErr as err:
+#         print(err)
+#         break
+#     except Exception as err:
+#         print(err)
+
 #------------------------------------------#
+# Module
+#------------------------------------------#
+# 1
+
+
 #------------------------------------------#
 #------------------------------------------#
 #------------------------------------------#
