@@ -1150,15 +1150,20 @@ import pickle
 # import time
 # print(time.localtime())
 # print(time.strftime("%Y-%m-%d %H:%M:%S"))
-import datetime
-print("오늘 날짜는 ", datetime.date.today())
 
-# timedelta : 두 날짜 사이의 간격
-today = datetime.date.today()
-td = datetime.timedelta(100)
-print(today + td)
+# import datetime
+# print("오늘 날짜는 ", datetime.date.today())
+
+# # timedelta : 두 날짜 사이의 간격
+# today = datetime.date.today()
+# td = datetime.timedelta(100)
+# print(today + td)
 
 #------------------------------------------#
+# Quiz
+import byme as b
+b.bymeClass.sign()
+
 #------------------------------------------#
 #------------------------------------------#
 #------------------------------------------#
