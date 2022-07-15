@@ -1160,9 +1160,9 @@ import pickle
 # print(today + td)
 
 #------------------------------------------#
-# Quiz
-import byme as b
-b.bymeClass.sign()
+# # Quiz
+# import byme as b
+# b.bymeClass.sign()
 
 #------------------------------------------#
 #------------------------------------------#
