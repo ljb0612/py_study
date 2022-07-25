@@ -21,9 +21,10 @@ clock = pygame.time.Clock()
 
 # 1. 사용자 게임 초기화 (배경화면, 이미지, 좌표, 폰트 등)
 
-bg = pygame.image.load("C:\\py_study\\basic\\py_study\\pygame_basic\\bg.png")
-char = pygame.image.load("C:\\py_study\\basic\\py_study\\pygame_basic\\character.png")
-enemy = pygame.image.load("C:\\py_study\\basic\\py_study\\pygame_basic\\enemy.png")
+#bg = pygame.image.load("C:\\py_study\\basic\\py_study\\pygame_basic\\bg.png")
+bg = pygame.image.load("./pygame_basic/bg.png")
+char = pygame.image.load("./pygame_basic/character.png")
+enemy = pygame.image.load("./pygame_basic/enemy.png")
 
 char_width = char.get_width()
 char_height = char.get_height()
@@ -32,15 +33,12 @@ char_y = screen_height - char_height
 
 enemy_width = enemy.get_width()
 enemy_height = enemy.get_height()
-enemy_x = 0
+enemy_x = randrange(0,screen_width-char_width+1)
 enemy_y = 0
-
 to_x = 0
-ddong_x = 0
-ddong_y = 0
 
 speed = 0.5
-ddong_speed = 0.03
+ddong_speed = 0.5
 
 text_font = pygame.font.Font(None,30)
 
@@ -68,16 +66,7 @@ while running:
     
     # enemy 좌표
     char_x += to_x * dt
-
-    if isExistDD == False:
-        isExistDD = True
-        enemy_y = 0
-        ddong_y = 0
-        ddong_x = randrange(0,screen_width-char_width+1)
-
-    enemy_x = ddong_x
-    ddong_y += ddong_speed
-    enemy_y += ddong_y * dt
+    enemy_y += ddong_speed * dt
     
     # 4. 충돌 처리
 
@@ -100,7 +89,8 @@ while running:
         running = False
 
     if enemy_rc.top >= screen_height:
-        isExistDD = False
+        enemy_y = 0
+        enemy_x = randrange(0,screen_width-char_width+1)
 
     # 5. 화면에 그리기
     screen.blit(bg,(0,0))
