@@ -22,11 +22,14 @@ clock = pygame.time.Clock()
 current_path = os.path.dirname(__file__)    # 현재 파일의 위치 반환
 image_path = os.path.join(current_path,"images")
 
+# 배경
 bg = pygame.image.load(os.path.join(image_path,"bg.png"))
 
+# 스테이지
 stage = pygame.image.load(os.path.join(image_path,"stage.png"))
 stage_height = stage.get_height()
 
+# 캐릭터 위치, 좌표
 char = pygame.image.load(os.path.join(image_path,"char.png"))
 char_w = char.get_width()
 char_h = char.get_height()
@@ -35,6 +38,7 @@ char_y = screen_height - char_h - stage_height
 char_to_x = 0
 char_speed = 5
 
+# 무기
 weapon = pygame.image.load(os.path.join(image_path,"weapon.png"))
 weapon_w = weapon.get_width()
 weapons = []
