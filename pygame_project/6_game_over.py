@@ -40,6 +40,9 @@ char_h = char.get_height()
 char_x = screen_width / 2 - (char_w / 2)
 char_y = screen_height - char_h - stage_height
 char_to_x = 0
+char_to_x_left = 0
+char_to_x_right = 0
+
 char_speed = 5
 
 # 무기
@@ -84,9 +87,9 @@ while running:
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                char_to_x -= char_speed
+                char_to_x_left -= char_speed
             elif event.key == pygame.K_RIGHT:
-                char_to_x += char_speed
+                char_to_x_right += char_speed
             elif event.key == pygame.K_SPACE:
                 weapon_pos_x = char_x + (char_w / 2) - (weapon_w / 2)
                 weapon_pos_y = char_y
@@ -94,11 +97,13 @@ while running:
 
 
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                char_to_x = 0
+            if event.key == pygame.K_LEFT:
+                char_to_x_left = 0
+            elif event.key == pygame.K_RIGHT:
+                char_to_x_right = 0
         
     # 3. 게임 캐릭터 위치 정의
-    char_x += char_to_x
+    char_x += char_to_x_left + char_to_x_right
 
     if char_x < 0:
         char_x = 0
@@ -165,7 +170,7 @@ while running:
             # 충돌 체크
             if w_rc.colliderect(ball_rc):
                 weapon_to_remove = weapon_idx # 해당 무기를 없애기 위한 인덱스
-                ball_to_remove = ball_img_idx # 해당 공 없애기 위한 인덱스
+                ball_to_remove = idx # 해당 공 없애기 위한 인덱스
 
                 if ball_img_idx < 3:
                     #현재 공 크기 정보
@@ -194,6 +199,9 @@ while running:
                         "init_speed_y" : ball_speed_y[ball_img_idx + 1]
                         })
                 break
+        else:
+            continue
+        break
 
     # 충돌된 공 or 무기 없애기
     if ball_to_remove > -1:
@@ -209,7 +217,7 @@ while running:
         game_result = "Mission Complete"
         running = False
 
-    # 5. 화면에 그리기
+# 5. 화면에 그리기
     screen.blit(bg,(0,0))
     for w_x, w_y in weapons:
         screen.blit(weapon,(w_x,w_y))
@@ -239,7 +247,7 @@ msg_rc = msg.get_rect(center = (int(screen_width / 2), int(screen_height / 2)))
 screen.blit(msg,msg_rc)
 pygame.display.update()
 # 종료직전 대기
-pygame.time.delay(2000)
+pygame.time.delay(1000)
 
 # pygame 종료
 pygame.quit()
